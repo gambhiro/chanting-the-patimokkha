@@ -1,0 +1,140 @@
+\documentclass[10pt,landscape]{article}
+
+\makeatletter
+
+\usepackage{graphicx}
+\graphicspath{{../images/}}
+\usepackage{xcolor}
+
+\usepackage{fontspec}
+\setmainfont[Ligatures=TeX]{TeX Gyre Pagella}
+
+\usepackage{amsmath}
+\usepackage{calc}
+\usepackage{eso-pic}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+
+\usepackage{pgfcalendar}
+\usepackage{pgfplotstable}
+
+\usepackage{geometry}
+\geometry{paper=a5paper, landscape}
+
+\pgfplotstableset{string type,col sep=comma}
+
+\pagestyle{empty}
+
+\pgfplotsset{compat=1.9}
+
+\tikzset{
+  every pin/.style={fill=yellow!50!white,rectangle,rounded corners=3pt,font=\small},
+  %every pin/.style={fill=green!50!white,rectangle,rounded corners=3pt,font=\small},
+  small dot/.style={fill=black,circle,scale=0.3}
+}
+
+\makeatother
+
+\begin{document}
+\mbox{}
+
+\AddToShipoutPictureFG*{\put(\LenToUnit{0.5cm},\LenToUnit{0.5cm}){%
+\begin{minipage}[b][\paperheight - 1cm]{\paperwidth - 1cm}
+\begin{tikzpicture}
+\begin{axis}[
+    title=Dive into the Pāṭimokkha,
+    width=20cm,
+    height=12cm,
+    clip=false,
+    date coordinates in=x,
+    cycle list={%
+      {dashed,mark=x},
+      {red,mark=*,mark size=1pt},
+      {blue},
+      {},
+    },
+    %axis background/.style={shade,top color=blue!60,bottom color=black},
+    %legend style={fill=blue!20},
+    y dir=reverse,
+    ylabel=Depth,
+    %xlabel=Time,
+    xtick=data,
+    xticklabel style={rotate=30,anchor=north east,font=\small},
+    xticklabel={\month-\day},
+    extra x ticks={2014-06-21,2014-07-10,2014-07-11,2014-09-22,2014-10-08,2014-11-20},
+    extra x tick labels={06-21,07-10,Asalha Puja 07-11,$s = 0.33$: 09-22,Pavarana 10-08,$s = 0.23$: 11-20},
+    legend pos=north east,
+    unbounded coords=jump,
+    extra y ticks={162},
+    extra y tick style={grid=major},
+    %extra y tick style={grid=major, tick align=inside, tick label style={anchor=north west,yshift=5pt,xshift=5pt,font=\footnotesize}},
+    %extra y ticks={1,4,14,24,26,32,54,58,84,132,138,158,162},
+    %extra y tick labels={Foreword,Pubba Kiccaṃ,Notes,Nidāna,Pārājika,Saṅghādisesa,Aniyata,Nissaggiya,Pācittiya,Pāṭidesaniya,Sekhiya,Adhikaraṇa,Bhikkhupāṭimokkhaṃ nitthitaṃ},
+  ]
+  %\draw[black,fill=yellow] (0.1,0.1) rectangle (1,1);
+
+  \draw[green!40,thick] (axis cs:2014-01-28,24) -- (axis cs:2014-05-07,70);% s = 0.23 page / day, or X day / page (46 pages in 99 days)
+  \draw[green!40,thick] (axis cs:2014-05-07,70) -- (axis cs:2014-11-20,162);% projected with s = 0.23, 92 pages
+  \draw[blue!40,thick] (axis cs:2014-05-07,70) -- (axis cs:2014-09-22,162);% projected with s = 0.33, 92 pages
+
+  % ((100-74)/2)/24
+  % s = 0.54 page / day, or 1.84 day / page
+  \draw[blue!90,thick] (axis cs:2014-05-18,74) -- (axis cs:2014-06-11,100);
+
+  \addplot table[x=date,y=read] {../plotdata/patimokkha.csv}; \addlegendentry{read};
+  \addplot table[x=date,y=recall] {../plotdata/patimokkha.csv}; \addlegendentry{recall};
+  \addplot table[x=date,y=recite] {../plotdata/patimokkha.csv}; \addlegendentry{recite};
+  \addplot[
+    const plot,
+    draw=none,
+    fill=gray,
+    fill opacity=0.2,
+  ] table[x=date,y=pain] {../plotdata/patimokkha.csv} \closedcycle; \addlegendentry{pain};
+
+  \draw
+    (axis cs:2014-03-01,38.5) -|
+    (axis cs:2014-03-20,47.7)
+    node[above right] {$\text{sinking} = \frac{dy}{\frac{1}{2} dx} = 0.23 \frac{\text{page}}{\text{day}}$, or $4.34 \frac{\text{day}}{\text{page}}$};
+
+  \draw
+    (axis cs:2014-06-01,90) |-
+    (axis cs:2014-06-10,100)
+    node[near start, left] {$0.54 \frac{\text{p}}{\text{d}}$, $1.84 \frac{\text{d}}{\text{p}}$};
+
+  \draw
+    (axis cs:2014-08-01,127) |-
+    (axis cs:2014-08-20,140)
+    node[near start, left] {$0.33 \frac{\text{p}}{\text{d}}$, $3.03 \frac{\text{d}}{\text{p}}$};
+
+  \draw[gray, thin] (axis cs:2014-06-21,78) -- (axis cs:2014-06-21,110);
+  \draw[gray, thin] (axis cs:2014-07-11,78) -- (axis cs:2014-07-11,110);
+  \draw[<->] (axis cs:2014-06-21,80) -- (axis cs:2014-07-11,80) node[pos=0.5,above] {\small @home};
+
+  \draw[gray, thin] (axis cs:2014-07-21,98) -- (axis cs:2014-07-21,116);
+  \draw[gray, thin] (axis cs:2014-07-29,98) -- (axis cs:2014-07-29,116);
+  \draw[<->] (axis cs:2014-07-21,100) -- (axis cs:2014-07-29,100) node[pos=0.5,above] {\small @ABM};
+
+  %\draw[blue,thick] (axis cs:2014-01-01,4) -- (axis cs:2014-01-01,10);
+  %\node[small dot,pin=180:{Pubba Kiccaṃ}] at (yticklabel* cs:0.9) {};
+
+  % Not like. Pin is better.
+  %\draw[gray, thin] (axis cs:2014-04-22,61) -- (axis cs:2014-04-22,73);
+  %\draw[gray, thin] (axis cs:2014-05-07,61) -- (axis cs:2014-05-07,73);
+  %\draw[green, thick, <->] (axis cs:2014-04-22,64) -- (axis cs:2014-05-07,64) node[pos=0.5,above] {NP 10: Sea monster!};
+
+  \node (np10) [coordinate,pin=30:{NP 10: Sea monster!}] at (axis cs:2014-04-22,64) {};
+  %\node[above right=-5pt and 3.15cm of np10.east] {\includegraphics[width=2.5cm]{squid-bw.png}};
+
+  %\node (pc56) [coordinate,pin=210:{Pc 56: Pause recording}] at (axis cs:2014-06-21,106) {};
+  \node (pc80) [coordinate,pin=40:{Pc 80}] at (axis cs:2014-08-27,122) {};
+\end{axis}
+\end{tikzpicture}
+\vfill\par\mbox{}
+\end{minipage}%
+}}
+
+\end{document}
