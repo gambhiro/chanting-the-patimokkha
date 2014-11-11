@@ -79,21 +79,20 @@
 
   \draw[green!40,thick] (axis cs:2014-01-28,24) -- (axis cs:2014-05-07,70);% s = 0.23 page / day, or X day / page (46 pages in 99 days)
   \draw[green!40,thick] (axis cs:2014-05-07,70) -- (axis cs:2014-11-20,162);% projected with s = 0.23, 92 pages
-  \draw[blue!40,thick] (axis cs:2014-05-07,70) -- (axis cs:2014-09-22,162);% projected with s = 0.33, 92 pages
 
   % ((100-74)/2)/24
   % s = 0.54 page / day, or 1.84 day / page
   \draw[blue!90,thick] (axis cs:2014-05-18,74) -- (axis cs:2014-06-11,100);
 
-  \addplot table[x=date,y=read] {../plotdata/patimokkha.csv}; \addlegendentry{read};
-  \addplot table[x=date,y=recall] {../plotdata/patimokkha.csv}; \addlegendentry{recall};
-  \addplot table[x=date,y=recite] {../plotdata/patimokkha.csv}; \addlegendentry{recite};
+  \addplot table[x=date,y=read] {./plotdata/patimokkha.csv}; \addlegendentry{read};
+  \addplot table[x=date,y=recall] {./plotdata/patimokkha.csv}; \addlegendentry{recall};
+  \addplot table[x=date,y=recite] {./plotdata/patimokkha.csv}; \addlegendentry{recite};
   \addplot[
     const plot,
     draw=none,
     fill=gray,
     fill opacity=0.2,
-  ] table[x=date,y=pain] {../plotdata/patimokkha.csv} \closedcycle; \addlegendentry{pain};
+  ] table[x=date,y=pain] {./plotdata/patimokkha.csv} \closedcycle; \addlegendentry{pain};
 
   \draw
     (axis cs:2014-03-01,38.5) -|
