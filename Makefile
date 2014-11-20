@@ -1,3 +1,3 @@
 
-all:
-	lualatex -interaction=nonstopmode -halt-on-error patimokkha-progress-chart.tex
+learning:
+	lualatex -interaction=nonstopmode -halt-on-error patimokkha-learning-chart.tex

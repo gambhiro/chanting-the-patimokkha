@@ -70,11 +70,7 @@
     ytick={0,14,24,32,54,84,132},
     extra y ticks={162},
     extra y tick style={grid=major},
-    %extra y tick style={grid=major, tick align=inside, tick label style={anchor=north west,yshift=5pt,xshift=5pt,font=\footnotesize}},
-    %extra y ticks={1,4,14,24,26,32,54,58,84,132,138,158,162},
-    %extra y tick labels={Foreword,Pubba Kiccaṃ,Notes,Nidāna,Pārājika,Saṅghādisesa,Aniyata,Nissaggiya,Pācittiya,Pāṭidesaniya,Sekhiya,Adhikaraṇa,Bhikkhupāṭimokkhaṃ nitthitaṃ},
   ]
-  %\draw[black,fill=yellow] (0.1,0.1) rectangle (1,1);
 
   \draw[green!40,thick] (axis cs:2014-01-28,24) -- (axis cs:2014-11-21,162);% s = 0.2323 page / day, or 4.3043 day / page
 
@@ -84,16 +80,16 @@
 
   \draw[green!40,thick] (axis cs:2014-10-20,122) -- (axis cs:2014-11-17,162);
 
-  \addplot table[x=date,y=read] {./plotdata/patimokkha.csv}; \addlegendentry{read};
-  \addplot table[x=date,y=recall] {./plotdata/patimokkha.csv}; \addlegendentry{recall};
-  \addplot table[x=date,y=recite] {./plotdata/patimokkha.csv}; \addlegendentry{recite};
+  \addplot table[x=date,y=read] {./plotdata/patimokkha-learning.csv}; \addlegendentry{read};
+  \addplot table[x=date,y=recall] {./plotdata/patimokkha-learning.csv}; \addlegendentry{recall};
+  \addplot table[x=date,y=recite] {./plotdata/patimokkha-learning.csv}; \addlegendentry{recite};
   \addplot[
     const plot,
     draw=none,
     fill=gray,
     fill opacity=0.2,
     area legend,
-  ] table[x=date,y=pain] {./plotdata/patimokkha.csv} \closedcycle; \addlegendentry{pain};
+  ] table[x=date,y=pain] {./plotdata/patimokkha-learning.csv} \closedcycle; \addlegendentry{pain};
 
   \draw
     (axis cs:2014-03-01,38.5) -|
