@@ -2,6 +2,8 @@
 
 \makeatletter
 
+\usepackage{graphicx}
+\graphicspath{{./images/}}
 \usepackage{xcolor}
 
 \usepackage{fontspec}
@@ -44,18 +46,30 @@
     clip=false,
     date coordinates in=x,
     cycle list={%
-      {red,mark=*,mark size=1pt},
+      {blue,mark=*,mark size=1pt},
     },
     ylabel=Time (mins),
     xtick=data,
+    xmin=2014-11-20,
+    xmax=2015-01-01,
+    enlarge x limits={rel=0.2,lower},
     xticklabel style={rotate=90,anchor=east,font=\small},
     xticklabel={\year-\month-\day},
     unbounded coords=jump,
     extra y ticks={60,120},
     extra y tick style={grid=major},
+    ymin=0,
   ]
 
-  \addplot table[x=date,y=minutes] {./plotdata/patimokkha-chanting.csv};
+  \addplot[
+    ybar,
+    draw=none,
+    fill=blue,
+    fill opacity=0.3,
+    nodes near coords,
+  ] table[x=date,y=minutes] {./plotdata/patimokkha-chanting.csv};
+
+  \node [anchor=south] at (axis cs:2014-11-21,0) {\includegraphics[width=5mm]{pt}};
 
 \end{axis}
 \end{tikzpicture}
