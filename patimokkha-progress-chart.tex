@@ -57,18 +57,17 @@
       {blue},
       {},
     },
-    %axis background/.style={shade,top color=blue!60,bottom color=black},
-    %legend style={fill=blue!20},
     y dir=reverse,
     ylabel=Depth,
-    %xlabel=Time,
-    xtick=data,
+    xtick={2014-01-01},
     xticklabel style={rotate=30,anchor=north east,font=\small},
     xticklabel={\month-\day},
-    extra x ticks={2014-06-21,2014-07-11,2014-10-08,2014-11-21},
-    extra x tick labels={06-21,Asalha Puja 07-11,Pavarana 10-08,$s = 4.3$: 11-21},
-    every axis legend/.append style={ at={(0.99,0.72)}, anchor=north east },
+    extra x ticks={2014-07-11,2014-10-08,2014-11-21},
+    extra x tick labels={Āsāḷhā 07-11,Pavāraṇā 10-08,$s = 0.23$ 11-21},
+    every axis legend/.append style={ at={(0.02,0.2)}, anchor=south west },
+    legend style={draw=none},
     unbounded coords=jump,
+    ytick={0,14,24,32,54,84,132},
     extra y ticks={162},
     extra y tick style={grid=major},
     %extra y tick style={grid=major, tick align=inside, tick label style={anchor=north west,yshift=5pt,xshift=5pt,font=\footnotesize}},
@@ -77,7 +76,7 @@
   ]
   %\draw[black,fill=yellow] (0.1,0.1) rectangle (1,1);
 
-  \draw[green!40,thick] (axis cs:2014-01-28,24) -- (axis cs:2014-11-21,162);% s = 4.3043 day / page, or 0.2323 page / day
+  \draw[green!40,thick] (axis cs:2014-01-28,24) -- (axis cs:2014-11-21,162);% s = 0.2323 page / day, or 4.3043 day / page
 
   % ((100-74)/2)/24
   % s = 0.54 page / day, or 1.84 day / page
@@ -93,12 +92,13 @@
     draw=none,
     fill=gray,
     fill opacity=0.2,
+    area legend,
   ] table[x=date,y=pain] {./plotdata/patimokkha.csv} \closedcycle; \addlegendentry{pain};
 
   \draw
     (axis cs:2014-03-01,38.5) -|
     (axis cs:2014-03-20,47.7)
-    node[above right] {$\text{sinking} = \frac{dy}{\frac{1}{2} dx} = 4.3 \frac{\text{day}}{\text{page}}$};
+    node[above right] {$\text{sinking} = \frac{\frac{1}{2} dx}{dy} = 0.23 \frac{\text{page}}{\text{day}}$};
 
   \draw
     (axis cs:2014-06-01,90) |-
@@ -126,7 +126,17 @@
 
   %\node (pc56) [coordinate,pin=210:{Pc 56: Pause recording}] at (axis cs:2014-06-21,106) {};
   \node (pc80) [coordinate,pin=40:{Pc 80}] at (axis cs:2014-08-27,122) {};
+
+  \node (bottomright) [coordinate] at (axis cs:2014-01-01,162) {};
 \end{axis}
+
+%\node (notes) [above left=0pt and 15mm of bottomright, anchor=south west] {%
+%  \begin{minipage}{4.5cm}
+%  \raggedright\footnotesize
+%  324 days. Read is \ldots. Recall is \ldots. Recite is \ldots. The faster the dive, the less the pain (inverse of the derivate of the sum of progress).
+%\end{minipage}%
+%};
+
 \end{tikzpicture}
 \vfill\par\mbox{}
 \end{minipage}%
