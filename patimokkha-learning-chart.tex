@@ -33,7 +33,6 @@
 
 \tikzset{
   every pin/.style={fill=yellow!50!white,rectangle,rounded corners=3pt,font=\small},
-  %every pin/.style={fill=green!50!white,rectangle,rounded corners=3pt,font=\small},
   small dot/.style={fill=black,circle,scale=0.3}
 }
 
@@ -109,19 +108,8 @@
   \draw[gray, thin] (axis cs:2014-07-29,98) -- (axis cs:2014-07-29,116);
   \draw[<->] (axis cs:2014-07-21,100) -- (axis cs:2014-07-29,100) node[pos=0.5,above] {\small @ABM};
 
-  %\draw[blue,thick] (axis cs:2014-01-01,4) -- (axis cs:2014-01-01,10);
-  %\node[small dot,pin=180:{Pubba Kiccaṃ}] at (yticklabel* cs:0.9) {};
-
-  % Not like. Pin is better.
-  %\draw[gray, thin] (axis cs:2014-04-22,61) -- (axis cs:2014-04-22,73);
-  %\draw[gray, thin] (axis cs:2014-05-07,61) -- (axis cs:2014-05-07,73);
-  %\draw[green, thick, <->] (axis cs:2014-04-22,64) -- (axis cs:2014-05-07,64) node[pos=0.5,above] {NP 10: Sea monster!};
-
   \node (np10) [coordinate,pin=30:{NP 10: Sea monster!}] at (axis cs:2014-04-22,64) {};
   %\node[above right=-5pt and 3.15cm of np10.east] {\includegraphics[width=2.5cm]{squid-bw.png}};
-
-  %\node (pc56) [coordinate,pin=210:{Pc 56: Pause recording}] at (axis cs:2014-06-21,106) {};
-  %\node (pc80) [coordinate,pin=40:{Pc 80}] at (axis cs:2014-08-27,122) {};
 
   \node (bottomright) [coordinate] at (axis cs:2014-01-01,162) {};
 \end{axis}

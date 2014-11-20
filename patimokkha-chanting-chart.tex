@@ -1,0 +1,67 @@
+\documentclass[10pt,landscape]{article}
+
+\makeatletter
+
+\usepackage{xcolor}
+
+\usepackage{fontspec}
+\setmainfont[Ligatures=TeX]{TeX Gyre Pagella}
+
+\usepackage{amsmath}
+\usepackage{calc}
+\usepackage{eso-pic}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+
+\usepackage{pgfcalendar}
+\usepackage{pgfplotstable}
+
+\usepackage{geometry}
+\geometry{paper=a5paper, landscape}
+
+\pgfplotstableset{string type,col sep=comma}
+
+\pagestyle{empty}
+
+\pgfplotsset{compat=1.9}
+
+\makeatother
+
+\begin{document}
+\mbox{}
+
+\AddToShipoutPictureFG*{\put(\LenToUnit{0.5cm},\LenToUnit{0.5cm}){%
+\begin{minipage}[b][\paperheight - 1cm]{\paperwidth - 1cm}
+\begin{tikzpicture}
+\begin{axis}[
+    title=Chanting the Pāṭimokkha,
+    width=20cm,
+    height=12cm,
+    clip=false,
+    date coordinates in=x,
+    cycle list={%
+      {red,mark=*,mark size=1pt},
+    },
+    ylabel=Time (mins),
+    xtick=data,
+    xticklabel style={rotate=90,anchor=east,font=\small},
+    xticklabel={\year-\month-\day},
+    unbounded coords=jump,
+    extra y ticks={60,120},
+    extra y tick style={grid=major},
+  ]
+
+  \addplot table[x=date,y=minutes] {./plotdata/patimokkha-chanting.csv};
+
+\end{axis}
+\end{tikzpicture}
+\vfill\par\mbox{}
+\end{minipage}%
+}}
+
+\end{document}
+
