@@ -6,6 +6,8 @@
 \graphicspath{{./images/}}
 \usepackage{xcolor}
 
+%\definecolor[RGB]{dark-orange}{F69A00}
+
 \usepackage{fontspec}
 \setmainfont[Ligatures=TeX]{TeX Gyre Pagella}
 
@@ -53,24 +55,36 @@
     xmin=2014-11-20,
     xmax=2015-01-01,
     enlarge x limits={rel=0.2,lower},
-    xticklabel style={rotate=90,anchor=east,font=\small},
+    xticklabel style={yshift=-20pt,rotate=90,anchor=east,font=\small},
     xticklabel={\year-\month-\day},
     unbounded coords=jump,
     %extra y ticks={60},
     %extra y tick style={grid=major},
     ymin=0,
     ymax=120,
+    legend pos=north east,
+    legend style={draw=none},
   ]
 
   \addplot[
     ybar,
     draw=none,
-    fill=blue,
-    fill opacity=0.3,
+    fill=blue!30,
     nodes near coords,
+    area legend,
   ] table[x=date,y=minutes] {./plotdata/patimokkha-chanting.csv};
+  \addlegendentry{time};
 
-  \node [anchor=south] at (axis cs:2014-11-21,0) {\includegraphics[width=5mm]{pt}};
+  \addplot[
+    ybar,
+    draw=none,
+    fill=orange,
+    nodes near coords,
+    area legend,
+  ] table[x=date,y=bhikkhus] {./plotdata/patimokkha-chanting.csv};
+  \addlegendentry{bhikkhus};
+
+  \node [anchor=south, yshift=-20pt] at (axis cs:2014-11-21,0) {\includegraphics[width=5mm]{pt}};
 
 \end{axis}
 \end{tikzpicture}
