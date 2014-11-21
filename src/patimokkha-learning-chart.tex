@@ -3,7 +3,7 @@
 \makeatletter
 
 \usepackage{graphicx}
-\graphicspath{{../images/}}
+\graphicspath{{./images/}}
 \usepackage{xcolor}
 
 \usepackage{fontspec}
@@ -32,7 +32,7 @@
 \pgfplotsset{compat=1.9}
 
 \tikzset{
-  every pin/.style={fill=yellow!50!white,rectangle,rounded corners=3pt,font=\small},
+  every pin/.style={draw=black!70,fill=yellow!50!white,rectangle,rounded corners=3pt,font=\small,opacity=0.9},
   small dot/.style={fill=black,circle,scale=0.3}
 }
 
@@ -77,6 +77,8 @@
   % s = 0.54 page / day, or 1.84 day / page
   \draw[green!40,thick] (axis cs:2014-05-18,74) -- (axis cs:2014-06-11,100);
 
+  % (40/2)/28
+  % s = 0.7142, or 1.4
   \draw[green!40,thick] (axis cs:2014-10-20,122) -- (axis cs:2014-11-17,162);
 
   \addplot table[x=date,y=read] {./plotdata/patimokkha-learning.csv}; \addlegendentry{read};
@@ -98,7 +100,12 @@
   \draw
     (axis cs:2014-06-01,90) |-
     (axis cs:2014-06-10,100)
-    node[near start, left] {$1.84 \frac{\text{d}}{\text{p}}$};
+    node[near start, left] {$0.54 \frac{\text{p}}{\text{d}}$};
+
+  \draw
+    (axis cs:2014-10-30,137) |-
+    (axis cs:2014-11-08,149)
+    node[near start, left] {$0.71 \frac{\text{p}}{\text{d}}$};
 
   \draw[gray, thin] (axis cs:2014-06-21,78) -- (axis cs:2014-06-21,110);
   \draw[gray, thin] (axis cs:2014-07-11,78) -- (axis cs:2014-07-11,110);
@@ -108,10 +115,12 @@
   \draw[gray, thin] (axis cs:2014-07-29,98) -- (axis cs:2014-07-29,116);
   \draw[<->] (axis cs:2014-07-21,100) -- (axis cs:2014-07-29,100) node[pos=0.5,above] {\small @ABM};
 
-  \node (np10) [coordinate,pin=30:{NP 10: Sea monster!}] at (axis cs:2014-04-22,64) {};
-  %\node[above right=-5pt and 3.15cm of np10.east] {\includegraphics[width=2.5cm]{squid-bw.png}};
-
   \node (bottomright) [coordinate] at (axis cs:2014-01-01,162) {};
+
+  \node (np10) [coordinate,pin=30:{NP 10: Sea monster!}] at (axis cs:2014-04-22,64) {};
+  %\node (np10) [coordinate,pin=30:{NP 10: Level Boss!}] at (axis cs:2014-04-22,64) {};
+  %\node[above right=-15pt and 3.15cm of np10.east,opacity=0.7] {\includegraphics[width=2.5cm,angle=-10]{squid-bw.png}};
+
 \end{axis}
 
 %\node (notes) [above left=0pt and 15mm of bottomright, anchor=south west] {%
