@@ -1,4 +1,6 @@
 *.swp
 *.log
 *.aux
+auto/
+src/auto/
 src/*.pdf

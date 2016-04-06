@@ -1,5 +1,9 @@
+Chanting the Pāṭimokkha
 
-A chart of tracking my progress at learning to chant the Pāṭimokkha.
+![Chanting time chart][chanting]
 
-LaTeX, tikz, pgfplots.
+Learning went [like this](learning).
 
+[chanting]: https://github.com/gambhiro/chanting-the-patimokkha/raw/master/charts/patimokkha-chanting-chart.png
+
+[learning]: https://github.com/gambhiro/chanting-the-patimokkha/raw/master/charts/patimokkha-learning-chart.png
