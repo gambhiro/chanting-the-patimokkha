@@ -25,7 +25,11 @@
 \usepackage{pgfplotstable}
 
 \usepackage{geometry}
-\geometry{paper=a5paper, landscape}
+\geometry{
+  paperheight=148mm,
+  paperwidth=500mm,
+  landscape,
+}
 
 \pgfplotstableset{string type,col sep=comma}
 
@@ -43,7 +47,7 @@
 \begin{tikzpicture}
 \begin{axis}[
     title=Chanting the Pāṭimokkha,
-    width=20cm,
+    width=\paperwidth - 2cm,
     height=12cm,
     clip=false,
     date coordinates in=x,
@@ -54,7 +58,7 @@
     ylabel=Time (mins),
     xtick=data,
     xmin=2014-11-20,
-    xmax=2018-05-01,
+    xmax=2018-12-31,
     enlarge x limits={rel=0.02,lower},
     xticklabel style={yshift=-20pt,rotate=90,anchor=east,font=\small},
     xticklabel={\year-\month-\day},
@@ -127,6 +131,7 @@
   \node [anchor=south, yshift=-20pt] at (axis cs:2018-03-16,0) {\includegraphics[width=5mm]{pt}};
   \node [anchor=south, yshift=-20pt] at (axis cs:2018-03-31,0) {\includegraphics[width=5mm]{pt}};
   \node [anchor=south, yshift=-20pt] at (axis cs:2018-04-14,0) {\includegraphics[width=5mm]{pt}};
+  \node [anchor=south, yshift=-20pt] at (axis cs:2018-05-14,0) {\includegraphics[width=5mm]{pt}};
 
 \end{axis}
 \end{tikzpicture}
