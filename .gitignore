@@ -2,5 +2,6 @@
 *.log
 *.aux
 auto/
+.auctex-auto/
 src/auto/
 src/*.pdf
