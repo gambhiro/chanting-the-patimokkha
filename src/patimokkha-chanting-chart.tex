@@ -9,7 +9,13 @@
 %\definecolor[RGB]{dark-orange}{F69A00}
 
 \usepackage{fontspec}
-\setmainfont[Ligatures=TeX]{TeX Gyre Pagella}
+% \setmainfont[Ligatures=TeX]{TeX Gyre Pagella}
+\setmainfont[
+  Ligatures = {TeX},
+  Path = {/home/gambhiro/texlive/2025/texmf-dist/fonts/opentype/public/tex-gyre/},
+]{texgyrepagella-regular.otf}
+
+% \setmainfont[Ligatures=TeX]{Source Code Pro}
 
 \usepackage{amsmath}
 \usepackage{calc}
@@ -207,6 +213,7 @@
   \node [anchor=south, yshift=-20pt] at (axis cs:2024-10-31,0) {\includegraphics[width=5mm]{pt}};
   \node [anchor=south, yshift=-20pt] at (axis cs:2024-12-15,0) {\includegraphics[width=5mm]{pt}};
   \node [anchor=south, yshift=-20pt] at (axis cs:2025-01-28,0) {\includegraphics[width=5mm]{pt}};
+  \node [anchor=south, yshift=-20pt] at (axis cs:2025-03-13,0) {\includegraphics[width=5mm]{pt}};
 
 \end{axis}
 \end{tikzpicture}
